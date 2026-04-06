@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kenya Elections 2026 - Voting Portal</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-vote-yea"></i>
+                    <h1>Kenya Elections 2026</h1>
+                </div>
+                <nav class="nav">
+                    <button id="homeBtn" class="nav-btn active">Home</button>
+                    <button id="loginBtn" class="nav-btn">Login</button>
+                    <button id="registerBtn" class="nav-btn">Register</button>
+                    <button id="voteBtn" class="nav-btn">Vote</button>
+                    <button id="resultsBtn" class="nav-btn">Results</button>
+                    <button id="chairmanLoginBtn" class="nav-btn">Chairman</button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <!-- Home Section -->
+            <section id="homeSection" class="section active">
+                <div class="hero">
+                    <h2>Welcome to Kenya Elections 2026</h2>
+                    <p>Secure, Transparent, and Modern Voting System</p>
+                    <div class="hero-actions">
+                        <button id="startVotingBtn" class="btn btn-primary">Start Voting</button>
+                        <button id="viewResultsBtn" class="btn btn-secondary">View Live Results</button>
+                    </div>
+                </div>
+                
+                <div class="features">
+                    <div class="feature-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Secure Voting</h3>
+                        <p>Your vote is protected with advanced security measures</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-user-secret"></i>
+                        <h3>Privacy Protected</h3>
+                        <p>Your personal information remains confidential</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h3>Mobile Friendly</h3>
+                        <p>Vote from any device, anywhere in Kenya</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Login Section -->
+            <section id="loginSection" class="section">
+                <div class="form-container">
+                    <div class="section-header">
+                        <button class="back-btn" onclick="votingSystem.showSection('home')">
+                            <i class="fas fa-arrow-left"></i> Back
+                        </button>
+                        <h2>Login to Vote</h2>
+                    </div>
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label for="voterId">Voter ID Number</label>
+                            <input type="text" id="voterId" required placeholder="Enter your ID number">
+                        </div>
+                        <div class="form-group">
+                            <label for="voterName">Full Name</label>
+                            <input type="text" id="voterName" required placeholder="Enter your full name">
+                        </div>
+                        <div class="form-group">
+                            <label for="voterPassword">Password</label>
+                            <div class="password-container">
+                                <input type="password" id="voterPassword" required placeholder="Enter your password">
+                                <button type="button" id="toggleVoterPasswordBtn" class="btn btn-secondary btn-sm">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Login to Vote</button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Registration Section -->
+            <section id="registerSection" class="section">
+                <div class="form-container">
+                    <div class="section-header">
+                        <button class="back-btn" onclick="votingSystem.showSection('home')">
+                            <i class="fas fa-arrow-left"></i> Back
+                        </button>
+                        <h2>Register to Vote</h2>
+                    </div>
+                    <form id="registerForm">
+                        <div class="form-group">
+                            <label for="regFullName">Full Name</label>
+                            <input type="text" id="regFullName" required placeholder="Enter your full name">
+                        </div>
+                        <div class="form-group">
+                            <label for="regIdNumber">ID Number</label>
+                            <input type="text" id="regIdNumber" required placeholder="Enter your ID number">
+                        </div>
+                        <div class="form-group">
+                            <label for="regCounty">County</label>
+                            <select id="regCounty" required>
+                                <option value="">Select your county</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="regPassword">Password</label>
+                            <div class="password-container">
+                                <input type="password" id="regPassword" required placeholder="Create a strong password">
+                                <button type="button" id="toggleRegPasswordBtn" class="btn btn-secondary btn-sm">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                            <small>Must contain 8+ characters with uppercase, lowercase, numbers, and special characters</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="regConfirmPassword">Confirm Password</label>
+                            <div class="password-container">
+                                <input type="password" id="regConfirmPassword" required placeholder="Confirm your password">
+                                <button type="button" id="toggleConfirmPasswordBtn" class="btn btn-secondary btn-sm">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Register</button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Voting Section -->
+            <section id="votingSection" class="section">
+                <div class="voting-container">
+                    <div class="section-header">
+                        <button class="back-btn" onclick="votingSystem.showSection('home')">
+                            <i class="fas fa-arrow-left"></i> Back
+                        </button>
+                        <h2>Cast Your Vote</h2>
+                    </div>
+                    <div class="voter-info">
+                        <p><strong>Voter:</strong> <span id="currentVoterName"></span></p>
+                        <p><strong>ID:</strong> <span id="currentVoterId"></span></p>
+                        <p><strong>County:</strong> <span id="currentVoterCounty"></span></p>
+                    </div>
+                    
+                    <div class="voting-positions">
+                        <!-- Presidential Election -->
+                        <div class="position-card">
+                            <h3>President</h3>
+                            <div class="candidates-grid" id="presidentialCandidates">
+                                <!-- Candidates will be populated by JavaScript -->
+                            </div>
+                        </div>
+
+                        <!-- Gubernatorial Election -->
+                        <div class="position-card">
+                            <h3>Governor - <span id="governorCounty"></span></h3>
+                            <div class="candidates-grid" id="gubernatorialCandidates">
+                                <!-- Candidates will be populated by JavaScript -->
+                            </div>
+                        </div>
+
+                        <!-- Senatorial Election -->
+                        <div class="position-card">
+                            <h3>Senator - <span id="senatorCounty"></span></h3>
+                            <div class="candidates-grid" id="senatorialCandidates">
+                                <!-- Candidates will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="selection-preview" id="selectionPreview">
+                        <h3>Selected Candidates</h3>
+                        <p class="no-selection">No candidates selected yet</p>
+                    </div>
+                    
+                    <div class="voting-actions">
+                        <button id="clearSelectionBtn" class="btn btn-secondary">Clear Selection</button>
+                        <button id="submitVoteBtn" class="btn btn-primary btn-large">Submit Vote</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section id="resultsSection" class="section">
+                <div class="results-container">
+                    <div class="section-header">
+                        <button class="back-btn" onclick="votingSystem.showSection('home')">
+                            <i class="fas fa-arrow-left"></i> Back
+                        </button>
+                        <h2>Live Election Results</h2>
+                    </div>
+                    
+                    <div class="county-selector">
+                        <label for="resultsCounty">Select County:</label>
+                        <select id="resultsCounty">
+                            <option value="">Select a county to view results</option>
+                            <option value="all">All Counties</option>
+                        </select>
+                    </div>
+                    
+                    <div class="results-summary">
+                        <div class="summary-card">
+                            <h3>Total Votes Cast</h3>
+                            <p class="total-votes" id="totalVotes">0</p>
+                        </div>
+                        <div class="summary-card">
+                            <h3>Registered Voters</h3>
+                            <p class="total-voters" id="totalVoters">0</p>
+                        </div>
+                    </div>
+                    
+                    <div class="results-tabs">
+                        <button class="tab-btn active" data-tab="presidential">Presidential</button>
+                        <button class="tab-btn" data-tab="gubernatorial">Gubernatorial</button>
+                        <button class="tab-btn" data-tab="senatorial">Senatorial</button>
+                    </div>
+                    
+                    <div class="results-content">
+                        <div id="presidentialResults" class="tab-content active">
+                            <!-- Presidential results will be populated by JavaScript -->
+                        </div>
+                        <div id="gubernatorialResults" class="tab-content">
+                            <!-- Gubernatorial results will be populated by JavaScript -->
+                        </div>
+                        <div id="senatorialResults" class="tab-content">
+                            <!-- Senatorial results will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Chairman Login Section -->
+            <section id="chairmanLoginSection" class="section">
+                <div class="form-container">
+                    <div class="section-header">
+                        <button class="back-btn" onclick="votingSystem.showSection('home')">
+                            <i class="fas fa-arrow-left"></i> Back
+                        </button>
+                        <h2>Chairman Login</h2>
+                    </div>
+                    <form id="chairmanLoginForm">
+                        <div class="form-group">
+                            <label for="chairmanName">Chairman Name</label>
+                            <input type="text" id="chairmanName" required placeholder="Enter chairman name">
+                        </div>
+                        <div class="form-group">
+                            <label for="chairmanPassword">Password</label>
+                            <div class="password-container">
+                                <input type="password" id="chairmanPassword" required placeholder="Enter password">
+                                <button type="button" id="togglePasswordBtn" class="btn btn-secondary btn-sm">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Login as Chairman</button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Chairman Dashboard Section -->
+            <section id="chairmanDashboardSection" class="section">
+                <div class="chairman-dashboard">
+                    <div class="dashboard-header">
+                        <div class="section-header">
+                            <button class="back-btn" onclick="votingSystem.showSection('home')">
+                                <i class="fas fa-arrow-left"></i> Back
+                            </button>
+                            <h2>Chairman Dashboard</h2>
+                        </div>
+                        <div class="chairman-info">
+                            <p>Welcome, <strong id="chairmanDisplayName">Brian Kitema</strong></p>
+                            <button id="logoutChairmanBtn" class="btn btn-secondary">Logout</button>
+                        </div>
+                    </div>
+                    
+                    <div class="dashboard-controls">
+                        <button id="launchSystemBtn" class="btn btn-success">Launch System</button>
+                        <button id="deactivateSystemBtn" class="btn btn-danger">Deactivate System</button>
+                        <button id="activateVotingBtn" class="btn btn-success">Activate Voting</button>
+                        <button id="deactivateVotingBtn" class="btn btn-danger">Deactivate Voting</button>
+                        <button id="viewAllVotesBtn" class="btn btn-primary">View All Votes</button>
+                        <button id="detectFraudBtn" class="btn btn-warning">Detect Fraud</button>
+                        <button id="downloadResultsBtn" class="btn btn-secondary">Download Results</button>
+                    </div>
+                    
+                    <div class="system-status">
+                        <h3>System Status</h3>
+                        <div class="status-indicator" id="systemStatus">
+                            <div class="status-dot inactive"></div>
+                            <span>System Inactive</span>
+                        </div>
+                    </div>
+                    
+                    <div class="voting-status">
+                        <h3>Voting Status</h3>
+                        <div class="status-indicator" id="votingStatus">
+                            <span class="status-dot inactive"></span>
+                            <span>Voting Inactive</span>
+                        </div>
+                    </div>
+                    
+                    <div class="votes-management">
+                        <h3>Vote Management</h3>
+                        <div class="search-filters">
+                            <input type="text" id="searchVoter" placeholder="Search by ID or name">
+                            <select id="filterCounty">
+                                <option value="">All Counties</option>
+                            </select>
+                            <button id="searchVotesBtn" class="btn btn-primary">Search</button>
+                        </div>
+                        
+                        <div class="votes-table-container">
+                            <table id="votesTable" class="votes-table">
+                                <thead>
+                                    <tr>
+                                        <th>Voter ID</th>
+                                        <th>Name</th>
+                                        <th>County</th>
+                                        <th>President</th>
+                                        <th>Governor</th>
+                                        <th>Senator</th>
+                                        <th>Timestamp</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="votesTableBody">
+                                    <!-- Votes will be populated by JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <div class="fraud-detection" id="fraudDetectionPanel" style="display: none;">
+                        <h3>Fraud Detection Results</h3>
+                        <div id="fraudResults">
+                            <!-- Fraud detection results will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Kenya Elections Commission. All rights reserved.</p>
+            <p>Secure | Transparent | Democratic</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
